@@ -29,8 +29,11 @@ normative:
   RFC8914:
 
 informative:
+  RFC4035:
   RFC7646:
   RFC6840:
+  RFC7858:
+  RFC8484:
   RFC9364:
 ---
 
@@ -73,6 +76,15 @@ any unsigned response.
 The EXTRA-TEXT field MAY contain the name at which the NTA was
 configured, to aid operator troubleshooting.
 
+Because this response bypassed DNSSEC validation, it is not
+authentic, and the resolver does not set the AD bit (Section 3.2.3
+of [RFC4035]; Section 1.1 of [RFC7646]).  This EDE conveys the
+reason the AD bit is unset and does not itself change AD handling.
+As with all EDE information, this INFO-CODE is diagnostic; per
+Section 6 of [RFC8914] a client MUST NOT use its presence to alter
+protocol processing, and relies on the AD bit and its own
+validation to determine authentication status.
+
 # IANA Considerations
 
 IANA is requested to allocate a new code in the "Extended DNS Error
@@ -99,5 +111,13 @@ aware that the accompanying response has not benefited from DNSSEC
 validation and should make trust decisions accordingly.  See [RFC7646]
 for further discussion of the operational and security implications of
 NTAs.
+
+The AD bit and this EDE option are both carried between the resolver
+and the client without cryptographic protection, so an on-path
+attacker could add, remove, or modify either signal.  A client MUST
+NOT treat this EDE as overriding the AD bit.  Clients that require
+assurance of these signals should use an authenticated and encrypted
+transport between client and resolver, such as DNS over TLS [RFC7858]
+or DNS over HTTPS [RFC8484].
 
 --- back
