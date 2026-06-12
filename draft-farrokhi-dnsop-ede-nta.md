@@ -42,7 +42,7 @@ informative:
 This document defines a new Extended DNS Error (EDE) INFO-CODE that a
 validating resolver can use to signal that a response bypassed DNSSEC
 validation because a Negative Trust Anchor (NTA) was in effect for the
-queried name or an ancestor thereof.
+queried name or one of its ancestors.
 
 --- middle
 
@@ -69,7 +69,7 @@ a Negative Trust Anchor was applied to the response.
 
 The resolver returned an answer that bypassed DNSSEC validation
 because a Negative Trust Anchor [RFC7646] was configured for the
-queried name or an ancestor thereof.  The response is therefore not
+queried name or one of its ancestors.  The response is therefore not
 DNSSEC-validated and SHOULD be treated by the client as it would treat
 any unsigned response.
 
