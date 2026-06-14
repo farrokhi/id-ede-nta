@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-06-11T00:32:50.928828+00:00",
+  "timestamp": "2026-06-14T00:30:28.785545+00:00",
   "repo": "farrokhi/id-ede-nta",
   "labels": [
     {
@@ -50,5 +50,34 @@
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOSmmFmc7lw80l",
+      "title": "Clarification on AD bit, and some language improvements",
+      "url": "https://github.com/farrokhi/id-ede-nta/pull/1",
+      "state": "OPEN",
+      "author": "farrokhi",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "farrokhi"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-06-12T13:01:17Z",
+      "updatedAt": "2026-06-12T13:01:17Z",
+      "baseRepository": "farrokhi/id-ede-nta",
+      "baseRefName": "main",
+      "baseRefOid": "efd71ee185f254c2ff33f85df52fd48336336282",
+      "headRepository": "farrokhi/id-ede-nta",
+      "headRefName": "ede-nta-ad-bit",
+      "headRefOid": "afee2e56ab72de51bd445ee63e1673d1d3087804",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
