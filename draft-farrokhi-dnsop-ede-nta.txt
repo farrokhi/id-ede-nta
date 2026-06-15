@@ -53,14 +53,14 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction
-     1.1.  Terminology
-   2.  Extended DNS Error Code TBD - Negative Trust Anchor in Effect
-   3.  Operational Considerations
-   4.  IANA Considerations
-   5.  Security Considerations
-   6.  References
-     6.1.  Normative References
-     6.2.  Informative References
+   2.  Terminology
+   3.  Extended DNS Error Code TBD - Negative Trust Anchor in Effect
+   4.  Operational Considerations
+   5.  IANA Considerations
+   6.  Security Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Appendix A.  Acknowledgements
    Authors' Addresses
 
@@ -87,7 +87,7 @@ Table of Contents
    effect.  This document defines that in-band signal, complementing
    such out-of-band disclosure.
 
-1.1.  Terminology
+2.  Terminology
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
@@ -98,7 +98,7 @@ Table of Contents
    This document assumes a familiarity with common DNS terminology as
    described in [RFC9499].
 
-2.  Extended DNS Error Code TBD - Negative Trust Anchor in Effect
+3.  Extended DNS Error Code TBD - Negative Trust Anchor in Effect
 
    A response that includes one or more instances of EDE TBD was
    generated with a covering NTA [RFC7646] in effect.
@@ -116,7 +116,7 @@ Table of Contents
    which does not perform validation and hence has no obvious use for an
    NTA, SHOULD NOT include this EDE.
 
-3.  Operational Considerations
+4.  Operational Considerations
 
    An operator that applies an NTA SHOULD return this EDE in affected
    responses, so that end users and applications can tell that the
@@ -147,7 +147,7 @@ Table of Contents
    When multiple instances of this EDE are included, the EXTRA-TEXT
    field in each instance SHOULD be populated.
 
-4.  IANA Considerations
+5.  IANA Considerations
 
    IANA has made the following allocation in the "Extended DNS Error
    Codes" registry under the "Domain Name System (DNS) Parameters"
@@ -161,7 +161,7 @@ Table of Contents
 
                                   Table 1
 
-5.  Security Considerations
+6.  Security Considerations
 
    An NTA represents an intentional, operator-driven suspension of
    DNSSEC validation for a specific domain.  See [RFC7646] for further
@@ -179,9 +179,9 @@ Table of Contents
    or DNS over HTTPS [RFC8484].  See Section 6 of [RFC8914] for more
    discussion.
 
-6.  References
+7.  References
 
-6.1.  Normative References
+7.1.  Normative References
 
    [RFC8914]  Kumari, W., Hunt, E., Arends, R., Hardaker, W., and D.
               Lawrence, "Extended DNS Errors", RFC 8914,
@@ -214,7 +214,7 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-
               structured-dns-error-22>.
 
-6.2.  Informative References
+7.2.  Informative References
 
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
               and P. Hoffman, "Specification for DNS over Transport
