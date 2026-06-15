@@ -25,6 +25,7 @@ author:
     org: Cloudflare
     email: jabley@cloudflare.com
   - ins: S. Neuteboom
+    name: Sebastiaan Neuteboom
     org: Cloudflare
     email: sebastiaan@cloudflare.com
 
@@ -34,10 +35,8 @@ normative:
 informative:
   RFC4035:
   RFC7646:
-  RFC6840:
   RFC7858:
   RFC8484:
-  RFC9364:
   I-D.ietf-dnsop-structured-dns-error:
 ---
 
