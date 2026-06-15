@@ -18,12 +18,15 @@ keyword:
 author:
   - ins: B. Farrokhi
     name: Babak Farrokhi
-    org: "Perforlabs"
-    email: "babak@perforlabs.com"
+    org: Quad9
+    email: babak@quad9.net
   - ins: J. Abley
     name: Joe Abley
     org: Cloudflare
     email: jabley@cloudflare.com
+  - ins: S. Neuteboom
+    org: Cloudflare
+    email: sebastiaan@cloudflare.com
 
 normative:
   RFC8914:
@@ -35,6 +38,7 @@ informative:
   RFC7858:
   RFC8484:
   RFC9364:
+  I-D.ietf-dnsop-structured-dns-error:
 ---
 
 --- abstract
@@ -61,6 +65,13 @@ in effect, there is currently no standard way to signal this fact to
 the client.  This document defines a new EDE INFO-CODE to convey that
 a Negative Trust Anchor was applied to the response.
 
+A further goal of this signal is transparency toward end users and
+applications.  Section 3.1 of [RFC7646] recommends that operators
+disclose the NTAs they have in place, for example on a website, and
+notes that no in-band DNS signal exists to indicate that an NTA is in
+effect.  This document defines that in-band signal, complementing such
+out-of-band disclosure.
+
 ## Requirements Language
 
 {::boilerplate bcp14-tagged}
@@ -73,9 +84,6 @@ queried name or one of its ancestors.  The response is therefore not
 DNSSEC-validated and SHOULD be treated by the client as it would treat
 any unsigned response.
 
-The EXTRA-TEXT field MAY contain the name at which the NTA was
-configured, to aid operator troubleshooting.
-
 Because this response bypassed DNSSEC validation, it is not
 authentic, and the resolver does not set the AD bit (Section 3.2.3
 of [RFC4035]; Section 1.1 of [RFC7646]).  This EDE conveys the
@@ -84,6 +92,23 @@ As with all EDE information, this INFO-CODE is diagnostic; per
 Section 6 of [RFC8914] a client MUST NOT use its presence to alter
 protocol processing, and relies on the AD bit and its own
 validation to determine authentication status.
+
+# Operational Considerations
+
+An operator that applies an NTA SHOULD return this EDE in affected
+responses, so that end users and applications can tell that the
+response was not DNSSEC-validated because of an operator decision
+rather than a validation failure.  This complements, and does not
+replace, the disclosure recommended in Section 3.1 of [RFC7646].
+
+The operator MAY use the EXTRA-TEXT field to add context about the
+NTA, such as the name at which it was configured, the reason it was
+put in place, a reference where more information can be found, or its
+expected duration.  As noted in Section 2 of [RFC8914], EXTRA-TEXT is
+intended for human consumption; operators SHOULD keep it readable and
+SHOULD NOT include private or sensitive information.
+[I-D.ietf-dnsop-structured-dns-error] describes a structured
+convention for the EXTRA-TEXT field in a related context.
 
 # IANA Considerations
 
