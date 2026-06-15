@@ -1,5 +1,5 @@
 ---
-title: "Disclosuree of Negative Trust Anchors in DNS Responses"
+title: "Disclosure of Negative Trust Anchors in DNS Responses"
 abbrev: "EDE NTA"
 docname: draft-farrokhi-dnsop-ede-nta-latest
 category: info
