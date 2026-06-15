@@ -59,7 +59,7 @@ notes that no in-band DNS signal exists to indicate that an NTA is in
 effect.  This document defines that in-band signal, complementing such
 out-of-band disclosure.
 
-## Terminology
+# Terminology
 
 {::boilerplate bcp14-tagged}
 
