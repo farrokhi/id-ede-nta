@@ -71,7 +71,7 @@ described in {{!RFC9499}}.
 A response that includes EDE TBD was generated with a covering NTA
 {{!RFC7646}} in effect.
 
-As with all EDE information, this INFO-CODE is diagnostic; per
+As with all EDEs, the EDE defined in this document is diagnostic; per
 Section 6 of {{!RFC8914}} a client MUST NOT use its presence to
 alter protocol processing.  The presence of this EDE in a response
 MUST NOT modify AD bit processing in DNS messages. The only purpose
