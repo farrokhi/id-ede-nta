@@ -70,10 +70,7 @@ described in {{!RFC9499}}.
 # Extended DNS Error Code TBD - Negative Trust Anchor in Effect
 
 A response that includes EDE TBD was generated with a covering NTA
-{{!RFC7646}} in effect; that is, an NTA for a domain was configured
-on the resolver and the QNAME is subordinate to that domain.
-Validation of the data contained within the response has not taken
-place.
+{{!RFC7646}} in effect.
 
 As with all EDE information, this INFO-CODE is diagnostic; per
 Section 6 of {{!RFC8914}} a client MUST NOT use its presence to
@@ -95,15 +92,30 @@ responses, so that end users and applications can tell that the
 response was not DNSSEC-validated because of an operator decision
 rather than a validation failure.  This complements, and does not
 replace, the disclosure recommended in Section 3.1 of {{!RFC7646}}.
+Note that a response might be affected by an NTA for various reasons,
+not just in the case where the QNAME is subordinate to the domain
+for which an NTA has been configured.
+
+A resolver MAY include this EDE on any responses while an NTA is
+in effect, regardless of whether the presence of the NTA had a
+material effect on the contents of the response.
+
+A resolver with multiple NTAs in place simultaneously MAY include
+multiple instances of this EDE, each representing a different NTA.
 
 The operator MAY use the EXTRA-TEXT field to add context about the
 NTA, such as the name at which it was configured, the reason it was
-put in place, a reference where more information can be found, or its
-expected duration.  As noted in Section 2 of {{!RFC8914}}, EXTRA-TEXT
-is intended for human consumption; operators SHOULD keep it readable
-and SHOULD NOT include private or sensitive information.
-{{?I-D.ietf-dnsop-structured-dns-error}} describes a structured
-convention for the EXTRA-TEXT field in a related context.
+put in place, a reference where more information can be found, or
+its expected duration.  As noted in Section 2 of {{!RFC8914}},
+EXTRA-TEXT is intended for human consumption; operators SHOULD keep
+it readable and SHOULD NOT include private or sensitive information.
+Structured data MAY be included in the EXTRA-TEXT field, as described
+in {{?I-D.ietf-dnsop-structured-dns-error}}.
+
+A resolver with multiple NTAs in place simultaneously MAY include
+multiple instances of this EDE in a single response, each corresponding
+a different NTA.  In this case, the EXTRA-TEXT field in each instance
+of this EDE SHOULD be populated.
 
 # IANA Considerations
 
