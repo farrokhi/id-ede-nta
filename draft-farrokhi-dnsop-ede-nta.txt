@@ -100,15 +100,15 @@ Table of Contents
 
 2.  Extended DNS Error Code TBD - Negative Trust Anchor in Effect
 
-   A response that includes EDE TBD was generated with a covering NTA
-   [RFC7646] in effect.
+   A response that includes one or more instances of EDE TBD was
+   generated with a covering NTA [RFC7646] in effect.
 
    As with all EDEs, the EDE defined in this document is diagnostic; per
    Section 6 of [RFC8914] a client MUST NOT use its presence to alter
-   protocol processing.  The presence of this EDE in a response MUST NOT
-   modify AD bit processing in DNS messages.  The only purpose of this
-   EDE is to provide additional information about the response in which
-   it appears.
+   protocol processing.  The inclusion of this EDE in a response does
+   not change AD bit processing in DNS messages in any way.  The only
+   purpose of this EDE is to provide additional information about the
+   response in which it appears.
 
    This EDE is intended for use in DNS responses sent by a DNS resolver
    with a configured NTA and SHOULD NOT be included in other responses.

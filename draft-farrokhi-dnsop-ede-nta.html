@@ -1229,14 +1229,14 @@ described in <span>[<a href="#RFC9499" class="cite xref">RFC9499</a>]</span>.<a 
       <h2 id="name-extended-dns-error-code-tbd">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-extended-dns-error-code-tbd" class="section-name selfRef">Extended DNS Error Code TBD - Negative Trust Anchor in Effect</a>
       </h2>
-<p id="section-2-1">A response that includes EDE TBD was generated with a covering NTA
-<span>[<a href="#RFC7646" class="cite xref">RFC7646</a>]</span> in effect.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">As with all EDEs, the EDE defined in this document is diagnostic; per
-Section 6 of <span>[<a href="#RFC8914" class="cite xref">RFC8914</a>]</span> a client <span class="bcp14">MUST NOT</span> use its presence to
-alter protocol processing.  The presence of this EDE in a response
-<span class="bcp14">MUST NOT</span> modify AD bit processing in DNS messages. The only purpose
-of this EDE is to provide additional information about the response
-in which it appears.<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-1">A response that includes one or more instances of EDE TBD was
+generated with a covering NTA <span>[<a href="#RFC7646" class="cite xref">RFC7646</a>]</span> in effect.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">As with all EDEs, the EDE defined in this document is diagnostic;
+per Section 6 of <span>[<a href="#RFC8914" class="cite xref">RFC8914</a>]</span> a client <span class="bcp14">MUST NOT</span> use its presence
+to alter protocol processing.  The inclusion of this EDE in a
+response does not change AD bit processing in DNS messages in any
+way. The only purpose of this EDE is to provide additional information
+about the response in which it appears.<a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3">This EDE is intended for use in DNS responses sent by a DNS resolver
 with a configured NTA and <span class="bcp14">SHOULD NOT</span> be included in other responses.
 For example, a DNS response sent by an authoritative-only DNS server,
