@@ -1261,7 +1261,8 @@ this EDE on any responses while an NTA is in effect, regardless of
 whether the presence of the NTA had a material effect on the contents
 of the response.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3">A resolver with multiple NTAs in place simultaneously <span class="bcp14">MAY</span> include
-multiple instances of this EDE, each representing a different NTA.<a href="#section-3-3" class="pilcrow">¶</a></p>
+multiple instances of this EDE in a single response, each representing
+a different NTA.<a href="#section-3-3" class="pilcrow">¶</a></p>
 <p id="section-3-4">The operator <span class="bcp14">MAY</span> use the EXTRA-TEXT field to add context about the
 NTA, such as the name at which it was configured, the reason it was
 put in place, a reference where more information can be found, or
@@ -1270,10 +1271,8 @@ EXTRA-TEXT is intended for human consumption; operators <span class="bcp14">SHOU
 it readable and <span class="bcp14">SHOULD NOT</span> include private or sensitive information.
 Structured data <span class="bcp14">MAY</span> be included in the EXTRA-TEXT field, as described
 in <span>[<a href="#I-D.ietf-dnsop-structured-dns-error" class="cite xref">I-D.ietf-dnsop-structured-dns-error</a>]</span>.<a href="#section-3-4" class="pilcrow">¶</a></p>
-<p id="section-3-5">A resolver with multiple NTAs in place simultaneously <span class="bcp14">MAY</span> include
-multiple instances of this EDE in a single response, each corresponding
-a different NTA.  In this case, the EXTRA-TEXT field in each instance
-of this EDE <span class="bcp14">SHOULD</span> be populated.<a href="#section-3-5" class="pilcrow">¶</a></p>
+<p id="section-3-5">When multiple instances of this EDE are included, the EXTRA-TEXT
+field in each instance <span class="bcp14">SHOULD</span> be populated.<a href="#section-3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
