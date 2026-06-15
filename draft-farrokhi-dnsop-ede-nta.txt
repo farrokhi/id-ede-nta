@@ -227,7 +227,7 @@ Table of Contents
 
 Appendix A.  Acknowledgements
 
-   Your name here, etc.
+   The authors thank the contributors to this document.
 
 Authors' Addresses
 
