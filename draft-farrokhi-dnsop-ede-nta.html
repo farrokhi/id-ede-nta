@@ -1232,10 +1232,7 @@ described in <span>[<a href="#RFC9499" class="cite xref">RFC9499</a>]</span>.<a 
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-extended-dns-error-code-tbd" class="section-name selfRef">Extended DNS Error Code TBD - Negative Trust Anchor in Effect</a>
       </h2>
 <p id="section-2-1">A response that includes EDE TBD was generated with a covering NTA
-<span>[<a href="#RFC7646" class="cite xref">RFC7646</a>]</span> in effect; that is, an NTA for a domain was configured
-on the resolver and the QNAME is subordinate to that domain.
-Validation of the data contained within the response has not taken
-place.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<span>[<a href="#RFC7646" class="cite xref">RFC7646</a>]</span> in effect.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">As with all EDE information, this INFO-CODE is diagnostic; per
 Section 6 of <span>[<a href="#RFC8914" class="cite xref">RFC8914</a>]</span> a client <span class="bcp14">MUST NOT</span> use its presence to
 alter protocol processing.  The presence of this EDE in a response
@@ -1258,15 +1255,27 @@ an NTA, <span class="bcp14">SHOULD NOT</span> include this EDE.<a href="#section
 responses, so that end users and applications can tell that the
 response was not DNSSEC-validated because of an operator decision
 rather than a validation failure.  This complements, and does not
-replace, the disclosure recommended in Section 3.1 of <span>[<a href="#RFC7646" class="cite xref">RFC7646</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">The operator <span class="bcp14">MAY</span> use the EXTRA-TEXT field to add context about the
+replace, the disclosure recommended in Section 3.1 of <span>[<a href="#RFC7646" class="cite xref">RFC7646</a>]</span>.
+Note that a response might be affected by an NTA for various reasons,
+not just in the case where the QNAME is subordinate to the domain
+for which an NTA has been configured.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">A resolver <span class="bcp14">MAY</span> include this EDE on any responses while an NTA is
+in effect, regardless of whether the presence of the NTA had a
+material effect on the contents of the response.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">A resolver with multiple NTAs in place simultaneously <span class="bcp14">MAY</span> include
+multiple instances of this EDE, each representing a different NTA.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-4">The operator <span class="bcp14">MAY</span> use the EXTRA-TEXT field to add context about the
 NTA, such as the name at which it was configured, the reason it was
-put in place, a reference where more information can be found, or its
-expected duration.  As noted in Section 2 of <span>[<a href="#RFC8914" class="cite xref">RFC8914</a>]</span>, EXTRA-TEXT
-is intended for human consumption; operators <span class="bcp14">SHOULD</span> keep it readable
-and <span class="bcp14">SHOULD NOT</span> include private or sensitive information.
-<span>[<a href="#I-D.ietf-dnsop-structured-dns-error" class="cite xref">I-D.ietf-dnsop-structured-dns-error</a>]</span> describes a structured
-convention for the EXTRA-TEXT field in a related context.<a href="#section-3-2" class="pilcrow">¶</a></p>
+put in place, a reference where more information can be found, or
+its expected duration.  As noted in Section 2 of <span>[<a href="#RFC8914" class="cite xref">RFC8914</a>]</span>,
+EXTRA-TEXT is intended for human consumption; operators <span class="bcp14">SHOULD</span> keep
+it readable and <span class="bcp14">SHOULD NOT</span> include private or sensitive information.
+Structured data <span class="bcp14">MAY</span> be included in the EXTRA-TEXT field, as described
+in <span>[<a href="#I-D.ietf-dnsop-structured-dns-error" class="cite xref">I-D.ietf-dnsop-structured-dns-error</a>]</span>.<a href="#section-3-4" class="pilcrow">¶</a></p>
+<p id="section-3-5">A resolver with multiple NTAs in place simultaneously <span class="bcp14">MAY</span> include
+multiple instances of this EDE in a single response, each corresponding
+a different NTA.  In this case, the EXTRA-TEXT field in each instance
+of this EDE <span class="bcp14">SHOULD</span> be populated.<a href="#section-3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
