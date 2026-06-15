@@ -49,8 +49,8 @@ domain to mitigate misconfiguration.
 
 A resolver with an NTA in effect might send a response that ordinarily
 would have been suppressed because of validation failures.  This
-document defines a new EDE INFO-CODE that can be sent with a response
-to indicate that the response was subject to an active NTA.
+document defines a new EDE that can be sent with a response to
+indicate that the response was subject to an active NTA.
 
 A further goal of this signal is transparency toward end users and
 applications.  Section 3.1 of {{!RFC7646}} recommends that operators
