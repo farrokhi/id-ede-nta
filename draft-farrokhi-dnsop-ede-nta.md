@@ -100,7 +100,8 @@ whether the presence of the NTA had a material effect on the contents
 of the response.
 
 A resolver with multiple NTAs in place simultaneously MAY include
-multiple instances of this EDE, each representing a different NTA.
+multiple instances of this EDE in a single response, each representing
+a different NTA.
 
 The operator MAY use the EXTRA-TEXT field to add context about the
 NTA, such as the name at which it was configured, the reason it was
@@ -111,10 +112,8 @@ it readable and SHOULD NOT include private or sensitive information.
 Structured data MAY be included in the EXTRA-TEXT field, as described
 in {{!I-D.ietf-dnsop-structured-dns-error}}.
 
-A resolver with multiple NTAs in place simultaneously MAY include
-multiple instances of this EDE in a single response, each corresponding
-a different NTA.  In this case, the EXTRA-TEXT field in each instance
-of this EDE SHOULD be populated.
+When multiple instances of this EDE are included, the EXTRA-TEXT
+field in each instance SHOULD be populated.
 
 # IANA Considerations
 
