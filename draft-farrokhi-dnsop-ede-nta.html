@@ -1251,15 +1251,15 @@ an NTA, <span class="bcp14">SHOULD NOT</span> include this EDE.<a href="#section
       </h2>
 <p id="section-3-1">An operator that applies an NTA <span class="bcp14">SHOULD</span> return this EDE in affected
 responses, so that end users and applications can tell that the
-response was not DNSSEC-validated because of an operator decision
-rather than a validation failure.  This complements, and does not
-replace, the disclosure recommended in Section 3.1 of <span>[<a href="#RFC7646" class="cite xref">RFC7646</a>]</span>.
-Note that a response might be affected by an NTA for various reasons,
-not just in the case where the QNAME is subordinate to the domain
-for which an NTA has been configured.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">A resolver <span class="bcp14">MAY</span> include this EDE on any responses while an NTA is
-in effect, regardless of whether the presence of the NTA had a
-material effect on the contents of the response.<a href="#section-3-2" class="pilcrow">¶</a></p>
+response may not have been DNSSEC-validated.  This complements, and
+does not replace, the disclosure recommended in Section 3.1 of
+<span>[<a href="#RFC7646" class="cite xref">RFC7646</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">A response might be affected by an NTA for various reasons, not
+just in the case where the QNAME is subordinate to the domain for
+which an NTA has been configured. In any case, a resolver <span class="bcp14">MAY</span> include
+this EDE on any responses while an NTA is in effect, regardless of
+whether the presence of the NTA had a material effect on the contents
+of the response.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3">A resolver with multiple NTAs in place simultaneously <span class="bcp14">MAY</span> include
 multiple instances of this EDE, each representing a different NTA.<a href="#section-3-3" class="pilcrow">¶</a></p>
 <p id="section-3-4">The operator <span class="bcp14">MAY</span> use the EXTRA-TEXT field to add context about the
@@ -1351,8 +1351,12 @@ transport between client and resolver, such as DNS over TLS
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9499">[RFC9499]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Hoffman, P.</span> and <span class="refAuthor">K. Fujiwara</span>, <span class="refTitle">"DNS Terminology"</span>, <span class="seriesInfo">BCP 219</span>, <span class="seriesInfo">RFC 9499</span>, <span class="seriesInfo">DOI 10.17487/RFC9499</span>, <time datetime="2024-03" class="refDate">March 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9499">https://www.rfc-editor.org/info/rfc9499</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-dnsop-structured-dns-error">[I-D.ietf-dnsop-structured-dns-error]</dt>
+      <dd>
+<span class="refAuthor">Wing, D.</span>, <span class="refAuthor">Reddy.K, T.</span>, <span class="refAuthor">Cook, N.</span>, and <span class="refAuthor">M. Boucadair</span>, <span class="refTitle">"Structured Error Data for Filtered DNS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-dnsop-structured-dns-error-22</span>, <time datetime="2026-06-09" class="refDate">9 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-structured-dns-error-22">https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-structured-dns-error-22</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1363,10 +1367,6 @@ transport between client and resolver, such as DNS over TLS
 <a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.ietf-dnsop-structured-dns-error">[I-D.ietf-dnsop-structured-dns-error]</dt>
-        <dd>
-<span class="refAuthor">Wing, D.</span>, <span class="refAuthor">Reddy.K, T.</span>, <span class="refAuthor">Cook, N.</span>, and <span class="refAuthor">M. Boucadair</span>, <span class="refTitle">"Structured Error Data for Filtered DNS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-dnsop-structured-dns-error-22</span>, <time datetime="2026-06-09" class="refDate">9 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-structured-dns-error-22">https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-structured-dns-error-22</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC7858">[RFC7858]</dt>
         <dd>
 <span class="refAuthor">Hu, Z.</span>, <span class="refAuthor">Zhu, L.</span>, <span class="refAuthor">Heidemann, J.</span>, <span class="refAuthor">Mankin, A.</span>, <span class="refAuthor">Wessels, D.</span>, and <span class="refAuthor">P. Hoffman</span>, <span class="refTitle">"Specification for DNS over Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 7858</span>, <span class="seriesInfo">DOI 10.17487/RFC7858</span>, <time datetime="2016-05" class="refDate">May 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7858">https://www.rfc-editor.org/info/rfc7858</a>&gt;</span>. </dd>

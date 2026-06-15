@@ -120,16 +120,16 @@ Table of Contents
 
    An operator that applies an NTA SHOULD return this EDE in affected
    responses, so that end users and applications can tell that the
-   response was not DNSSEC-validated because of an operator decision
-   rather than a validation failure.  This complements, and does not
-   replace, the disclosure recommended in Section 3.1 of [RFC7646].
-   Note that a response might be affected by an NTA for various reasons,
-   not just in the case where the QNAME is subordinate to the domain for
-   which an NTA has been configured.
+   response may not have been DNSSEC-validated.  This complements, and
+   does not replace, the disclosure recommended in Section 3.1 of
+   [RFC7646].
 
-   A resolver MAY include this EDE on any responses while an NTA is in
-   effect, regardless of whether the presence of the NTA had a material
-   effect on the contents of the response.
+   A response might be affected by an NTA for various reasons, not just
+   in the case where the QNAME is subordinate to the domain for which an
+   NTA has been configured.  In any case, a resolver MAY include this
+   EDE on any responses while an NTA is in effect, regardless of whether
+   the presence of the NTA had a material effect on the contents of the
+   response.
 
    A resolver with multiple NTAs in place simultaneously MAY include
    multiple instances of this EDE, each representing a different NTA.
@@ -207,8 +207,6 @@ Table of Contents
               RFC 9499, DOI 10.17487/RFC9499, March 2024,
               <https://www.rfc-editor.org/info/rfc9499>.
 
-6.2.  Informative References
-
    [I-D.ietf-dnsop-structured-dns-error]
               Wing, D., Reddy.K, T., Cook, N., and M. Boucadair,
               "Structured Error Data for Filtered DNS", Work in
@@ -216,6 +214,8 @@ Table of Contents
               error-22, 9 June 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-
               structured-dns-error-22>.
+
+6.2.  Informative References
 
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
               and P. Hoffman, "Specification for DNS over Transport
