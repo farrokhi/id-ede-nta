@@ -2,7 +2,7 @@
 
 
 
-DNSOP Working Group                                          B. Farrokhi
+Network Working Group                                        B. Farrokhi
 Internet-Draft                                                     Quad9
 Intended status: Informational                                  J. Abley
 Expires: 17 December 2026                                   S. Neuteboom
