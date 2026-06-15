@@ -19,7 +19,7 @@ author:
   - ins: B. Farrokhi
     name: Babak Farrokhi
     org: Quad9
-    email: babak@quad9.net
+    email: babak@farrokhi.net
   - ins: J. Abley
     name: Joe Abley
     org: Cloudflare
