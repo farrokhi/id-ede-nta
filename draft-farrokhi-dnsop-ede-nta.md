@@ -148,4 +148,4 @@ transport between client and resolver, such as DNS over TLS
 
 # Acknowledgements
 
-Your name here, etc.
+The authors thank the contributors to this document.
