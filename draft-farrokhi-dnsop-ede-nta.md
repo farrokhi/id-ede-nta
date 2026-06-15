@@ -6,7 +6,6 @@ category: info
 stream: IETF
 ipr: trust200902
 area: Internet
-workgroup: DNSOP Working Group
 keyword:
   - DNS
   - EDE
