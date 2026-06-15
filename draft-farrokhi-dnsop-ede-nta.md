@@ -85,7 +85,7 @@ an NTA, SHOULD NOT include this EDE.
 
 IANA has made the following allocation in the in "Extended DNS Error
 Codes" registry under the "Domain Name System (DNS) Parameters"
-registry group, with the following values:
+registry group:
 
 | INFO-CODE | Purpose                | Reference     |
 |-----------|------------------------|---------------|
