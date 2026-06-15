@@ -31,10 +31,9 @@ author:
 
 --- abstract
 
-This document defines a new Extended DNS Error (EDE) INFO-CODE that
-a validating resolver can include in a response to signal that
-validation was not performed because a Negative Trust Anchor (NTA)
-was in effect.
+This document describes a mechanism for disclosing that a Negative
+Trust Anchor (NTA) was in effect at the time that a DNS response
+was generated, using an Extended DNS Error (EDE).
 
 --- middle
 
