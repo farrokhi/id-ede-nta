@@ -3,9 +3,10 @@
 
 
 DNSOP Working Group                                          B. Farrokhi
-Internet-Draft                                                Perforlabs
+Internet-Draft                                                     Quad9
 Intended status: Informational                                  J. Abley
-Expires: 17 December 2026                                     Cloudflare
+Expires: 17 December 2026                                   S. Neuteboom
+                                                              Cloudflare
                                                             15 June 2026
 
 
@@ -55,11 +56,12 @@ Table of Contents
    1.  Introduction
      1.1.  Terminology
    2.  Extended DNS Error Code TBD - Negative Trust Anchor in Effect
-   3.  IANA Considerations
-   4.  Security Considerations
-   5.  References
-     5.1.  Normative References
-     5.2.  Informative References
+   3.  Operational Considerations
+   4.  IANA Considerations
+   5.  Security Considerations
+   6.  References
+     6.1.  Normative References
+     6.2.  Informative References
    Appendix A.  Acknowledgements
    Authors' Addresses
 
@@ -79,6 +81,13 @@ Table of Contents
    This document defines a new EDE INFO-CODE that can be sent with a
    response to indicate that the response was subject to an active NTA.
 
+   A further goal of this signal is transparency toward end users and
+   applications.  Section 3.1 of [RFC7646] recommends that operators
+   disclose the NTAs they have in place, for example on a website, and
+   notes that no in-band DNS signal exists to indicate that an NTA is in
+   effect.  This document defines that in-band signal, complementing
+   such out-of-band disclosure.
+
 1.1.  Terminology
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -97,9 +106,6 @@ Table of Contents
    the resolver and the QNAME is subordinate to that domain.  Validation
    of the data contained within the response has not taken place.
 
-   The EXTRA-TEXT field of the EDE MAY contain the domain name for which
-   the NTA was configured, as an aid to troubleshooting.
-
    As with all EDE information, this INFO-CODE is diagnostic; per
    Section 6 of [RFC8914] a client MUST NOT use its presence to alter
    protocol processing.  The presence of this EDE in a response MUST NOT
@@ -113,9 +119,26 @@ Table of Contents
    which does not perform validation and hence has no obvious use for an
    NTA, SHOULD NOT include this EDE.
 
-3.  IANA Considerations
+3.  Operational Considerations
 
-   IANA has made the following allocation in the in "Extended DNS Error
+   An operator that applies an NTA SHOULD return this EDE in affected
+   responses, so that end users and applications can tell that the
+   response was not DNSSEC-validated because of an operator decision
+   rather than a validation failure.  This complements, and does not
+   replace, the disclosure recommended in Section 3.1 of [RFC7646].
+
+   The operator MAY use the EXTRA-TEXT field to add context about the
+   NTA, such as the name at which it was configured, the reason it was
+   put in place, a reference where more information can be found, or its
+   expected duration.  As noted in Section 2 of [RFC8914], EXTRA-TEXT is
+   intended for human consumption; operators SHOULD keep it readable and
+   SHOULD NOT include private or sensitive information.
+   [I-D.ietf-dnsop-structured-dns-error] describes a structured
+   convention for the EXTRA-TEXT field in a related context.
+
+4.  IANA Considerations
+
+   IANA has made the following allocation in the "Extended DNS Error
    Codes" registry under the "Domain Name System (DNS) Parameters"
    registry group:
 
@@ -127,7 +150,7 @@ Table of Contents
 
                                   Table 1
 
-4.  Security Considerations
+5.  Security Considerations
 
    An NTA represents an intentional, operator-driven suspension of
    DNSSEC validation for a specific domain.  See [RFC7646] for further
@@ -145,9 +168,9 @@ Table of Contents
    or DNS over HTTPS [RFC8484].  See Section 6 of [RFC8914] for more
    discussion.
 
-5.  References
+6.  References
 
-5.1.  Normative References
+6.1.  Normative References
 
    [RFC8914]  Kumari, W., Hunt, E., Arends, R., Hardaker, W., and D.
               Lawrence, "Extended DNS Errors", RFC 8914,
@@ -172,7 +195,15 @@ Table of Contents
               RFC 9499, DOI 10.17487/RFC9499, March 2024,
               <https://www.rfc-editor.org/info/rfc9499>.
 
-5.2.  Informative References
+6.2.  Informative References
+
+   [I-D.ietf-dnsop-structured-dns-error]
+              Wing, D., Reddy.K, T., Cook, N., and M. Boucadair,
+              "Structured Error Data for Filtered DNS", Work in
+              Progress, Internet-Draft, draft-ietf-dnsop-structured-dns-
+              error-22, 9 June 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-
+              structured-dns-error-22>.
 
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
               and P. Hoffman, "Specification for DNS over Transport
@@ -190,10 +221,15 @@ Appendix A.  Acknowledgements
 Authors' Addresses
 
    Babak Farrokhi
-   Perforlabs
-   Email: babak@perforlabs.com
+   Quad9
+   Email: babak@farrokhi.net
 
 
    Joe Abley
    Cloudflare
    Email: jabley@cloudflare.com
+
+
+   Sebastiaan Neuteboom
+   Cloudflare
+   Email: sebastiaan@cloudflare.com
