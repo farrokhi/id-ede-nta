@@ -197,11 +197,6 @@ Table of Contents
               Anchors", RFC 7646, DOI 10.17487/RFC7646, September 2015,
               <https://www.rfc-editor.org/info/rfc7646>.
 
-   [RFC6840]  Weiler, S., Ed. and D. Blacka, Ed., "Clarifications and
-              Implementation Notes for DNS Security (DNSSEC)", RFC 6840,
-              DOI 10.17487/RFC6840, February 2013,
-              <https://www.rfc-editor.org/info/rfc6840>.
-
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
               and P. Hoffman, "Specification for DNS over Transport
               Layer Security (TLS)", RFC 7858, DOI 10.17487/RFC7858, May
@@ -210,10 +205,6 @@ Table of Contents
    [RFC8484]  Hoffman, P. and P. McManus, "DNS Queries over HTTPS
               (DoH)", RFC 8484, DOI 10.17487/RFC8484, October 2018,
               <https://www.rfc-editor.org/info/rfc8484>.
-
-   [RFC9364]  Hoffman, P., "DNS Security Extensions (DNSSEC)", BCP 237,
-              RFC 9364, DOI 10.17487/RFC9364, February 2023,
-              <https://www.rfc-editor.org/info/rfc9364>.
 
    [I-D.ietf-dnsop-structured-dns-error]
               Wing, D., Reddy.K, T., Cook, N., and M. Boucadair,
@@ -235,6 +226,6 @@ Authors' Addresses
    Email: jabley@cloudflare.com
 
 
-   S. Neuteboom
+   Sebastiaan Neuteboom
    Cloudflare
    Email: sebastiaan@cloudflare.com
