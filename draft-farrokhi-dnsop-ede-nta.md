@@ -88,16 +88,16 @@ an NTA, SHOULD NOT include this EDE.
 
 An operator that applies an NTA SHOULD return this EDE in affected
 responses, so that end users and applications can tell that the
-response was not DNSSEC-validated because of an operator decision
-rather than a validation failure.  This complements, and does not
-replace, the disclosure recommended in Section 3.1 of {{!RFC7646}}.
-Note that a response might be affected by an NTA for various reasons,
-not just in the case where the QNAME is subordinate to the domain
-for which an NTA has been configured.
+response may not have been DNSSEC-validated.  This complements, and
+does not replace, the disclosure recommended in Section 3.1 of
+{{!RFC7646}}.
 
-A resolver MAY include this EDE on any responses while an NTA is
-in effect, regardless of whether the presence of the NTA had a
-material effect on the contents of the response.
+A response might be affected by an NTA for various reasons, not
+just in the case where the QNAME is subordinate to the domain for
+which an NTA has been configured. In any case, a resolver MAY include
+this EDE on any responses while an NTA is in effect, regardless of
+whether the presence of the NTA had a material effect on the contents
+of the response.
 
 A resolver with multiple NTAs in place simultaneously MAY include
 multiple instances of this EDE, each representing a different NTA.
@@ -109,7 +109,7 @@ its expected duration.  As noted in Section 2 of {{!RFC8914}},
 EXTRA-TEXT is intended for human consumption; operators SHOULD keep
 it readable and SHOULD NOT include private or sensitive information.
 Structured data MAY be included in the EXTRA-TEXT field, as described
-in {{?I-D.ietf-dnsop-structured-dns-error}}.
+in {{!I-D.ietf-dnsop-structured-dns-error}}.
 
 A resolver with multiple NTAs in place simultaneously MAY include
 multiple instances of this EDE in a single response, each corresponding
