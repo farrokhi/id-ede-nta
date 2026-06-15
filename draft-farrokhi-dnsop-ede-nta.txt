@@ -10,7 +10,7 @@ Expires: 17 December 2026                                   S. Neuteboom
                                                             15 June 2026
 
 
-              DNS EDE INFO-CODE for Negative Trust Anchor
+         Disclosuree of Negative Trust Anchors in DNS Responses
                   draft-farrokhi-dnsop-ede-nta-latest
 
 Abstract
