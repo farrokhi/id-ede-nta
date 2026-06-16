@@ -233,17 +233,14 @@ Authors' Addresses
 
    Babak Farrokhi
    Quad9
-   Netherlands
    Email: babak@farrokhi.net
 
 
    Joe Abley
    Cloudflare
-   Netherlands
    Email: jabley@cloudflare.com
 
 
    Sebastiaan Neuteboom
    Cloudflare
-   Netherlands
    Email: sebastiaan@cloudflare.com
