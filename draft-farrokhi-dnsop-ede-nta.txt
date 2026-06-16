@@ -5,9 +5,9 @@
 Network Working Group                                        B. Farrokhi
 Internet-Draft                                                     Quad9
 Intended status: Informational                                  J. Abley
-Expires: 17 December 2026                                   S. Neuteboom
+Expires: 18 December 2026                                   S. Neuteboom
                                                               Cloudflare
-                                                            15 June 2026
+                                                            16 June 2026
 
 
          Disclosure of Negative Trust Anchors in DNS Responses
@@ -34,7 +34,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 December 2026.
+   This Internet-Draft will expire on 18 December 2026.
 
 Copyright Notice
 
@@ -54,7 +54,7 @@ Table of Contents
 
    1.  Introduction
    2.  Terminology
-   3.  Extended DNS Error Code TBD - Negative Trust Anchor in Effect
+   3.  Extended DNS Error Code 33 - Negative Trust Anchor in Effect
    4.  Operational Considerations
    5.  IANA Considerations
    6.  Security Considerations
@@ -98,9 +98,9 @@ Table of Contents
    This document assumes a familiarity with common DNS terminology as
    described in [RFC9499].
 
-3.  Extended DNS Error Code TBD - Negative Trust Anchor in Effect
+3.  Extended DNS Error Code 33 - Negative Trust Anchor in Effect
 
-   A response that includes one or more instances of EDE TBD was
+   A response that includes one or more instances of EDE 33 was
    generated with a covering NTA [RFC7646] in effect.
 
    As with all EDEs, the EDE defined in this document is diagnostic; per
@@ -156,7 +156,7 @@ Table of Contents
            +===========+=======================+===============+
            | INFO-CODE | Purpose               | Reference     |
            +===========+=======================+===============+
-           | TBD       | Negative Trust Anchor | This document |
+           | 33        | Negative Trust Anchor | This document |
            +-----------+-----------------------+---------------+
 
                                   Table 1
@@ -233,14 +233,17 @@ Authors' Addresses
 
    Babak Farrokhi
    Quad9
+   Netherlands
    Email: babak@farrokhi.net
 
 
    Joe Abley
    Cloudflare
+   Netherlands
    Email: jabley@cloudflare.com
 
 
    Sebastiaan Neuteboom
    Cloudflare
+   Netherlands
    Email: sebastiaan@cloudflare.com
