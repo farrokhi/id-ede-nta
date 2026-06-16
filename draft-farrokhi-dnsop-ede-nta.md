@@ -18,17 +18,14 @@ author:
   - ins: B. Farrokhi
     name: Babak Farrokhi
     org: Quad9
-    country: Netherlands
     email: babak@farrokhi.net
   - ins: J. Abley
     name: Joe Abley
     org: Cloudflare
-    country: Netherlands
     email: jabley@cloudflare.com
   - ins: S. Neuteboom
     name: Sebastiaan Neuteboom
     org: Cloudflare
-    country: Netherlands
     email: sebastiaan@cloudflare.com
 ---
 
