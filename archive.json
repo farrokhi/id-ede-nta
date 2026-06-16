@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-06-14T00:30:28.785545+00:00",
+  "timestamp": "2026-06-16T00:37:34.219212+00:00",
   "repo": "farrokhi/id-ede-nta",
   "labels": [
     {
@@ -56,7 +56,7 @@
       "id": "PR_kwDOSmmFmc7lw80l",
       "title": "Clarification on AD bit, and some language improvements",
       "url": "https://github.com/farrokhi/id-ede-nta/pull/1",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "farrokhi",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -65,17 +65,47 @@
       "labels": [],
       "body": "",
       "createdAt": "2026-06-12T13:01:17Z",
-      "updatedAt": "2026-06-12T13:01:17Z",
+      "updatedAt": "2026-06-14T11:58:28Z",
       "baseRepository": "farrokhi/id-ede-nta",
       "baseRefName": "main",
       "baseRefOid": "efd71ee185f254c2ff33f85df52fd48336336282",
       "headRepository": "farrokhi/id-ede-nta",
       "headRefName": "ede-nta-ad-bit",
       "headRefOid": "afee2e56ab72de51bd445ee63e1673d1d3087804",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-06-14T11:58:28Z",
+      "mergedAt": "2026-06-14T11:58:28Z",
+      "mergedBy": "farrokhi",
+      "mergeCommit": {
+        "oid": "2df06fa8411647fe51bc77b5f13eb94cabfeaf84"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOSmmFmc7maiXV",
+      "title": "Add transparency goal and guidance on EXTRA-TEXT",
+      "url": "https://github.com/farrokhi/id-ede-nta/pull/2",
+      "state": "MERGED",
+      "author": "farrokhi",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Clarify that improving end-user transparency is one of the goals of this signal, which is also advised in RFC 7646 section 3.1\r\n\r\nWhile here, ensure list of authors is up to date",
+      "createdAt": "2026-06-15T06:56:32Z",
+      "updatedAt": "2026-06-15T13:44:29Z",
+      "baseRepository": "farrokhi/id-ede-nta",
+      "baseRefName": "main",
+      "baseRefOid": "7048ddd1b0aa191ae80cf32356512f00975b0bbb",
+      "headRepository": "farrokhi/id-ede-nta",
+      "headRefName": "ede-nta-transparency",
+      "headRefOid": "3a5918be9aee0ba7cc3eec68b07014a6548ab6b0",
+      "closedAt": "2026-06-15T13:44:25Z",
+      "mergedAt": "2026-06-15T13:44:25Z",
+      "mergedBy": "farrokhi",
+      "mergeCommit": {
+        "oid": "5213583e8ce7cf96931f80cd0261819e83f900c1"
+      },
       "comments": [],
       "reviews": []
     }
