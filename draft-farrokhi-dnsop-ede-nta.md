@@ -69,9 +69,9 @@ out-of-band disclosure.
 This document assumes a familiarity with common DNS terminology as
 described in {{!RFC9499}}.
 
-# Extended DNS Error Code TBD - Negative Trust Anchor in Effect
+# Extended DNS Error Code 33 - Negative Trust Anchor in Effect
 
-A response that includes one or more instances of EDE TBD was
+A response that includes one or more instances of EDE 33 was
 generated with a covering NTA {{!RFC7646}} in effect.
 
 As with all EDEs, the EDE defined in this document is diagnostic;
@@ -126,7 +126,7 @@ registry group:
 
 | INFO-CODE | Purpose                | Reference     |
 |-----------|------------------------|---------------|
-| TBD       | Negative Trust Anchor  | This document |
+| 33        | Negative Trust Anchor  | This document |
 
 
 # Security Considerations
