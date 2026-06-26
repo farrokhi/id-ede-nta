@@ -1184,10 +1184,10 @@ was generated, using an Extended DNS Error (EDE).<a href="#section-abstract-1" c
             <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
-                <p id="section-toc.1-1.9.2.1.1"><a href="#appendix-B.1" class="auto internal xref">B.1</a>.  <a href="#name-nta-in-effect-well-formed-s" class="internal xref">NTA in Effect, Well-Formed Signatures</a></p>
+                <p id="section-toc.1-1.9.2.1.1"><a href="#appendix-B.1" class="auto internal xref">B.1</a>.  <a href="#name-nta-in-effect-valid-dnssec-" class="internal xref">NTA in Effect, Valid DNSSEC Configuration</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
-                <p id="section-toc.1-1.9.2.2.1"><a href="#appendix-B.2" class="auto internal xref">B.2</a>.  <a href="#name-nta-in-effect-signature-pro" class="internal xref">NTA in Effect, Signature Problem</a></p>
+                <p id="section-toc.1-1.9.2.2.1"><a href="#appendix-B.2" class="auto internal xref">B.2</a>.  <a href="#name-nta-in-effect-validation-pr" class="internal xref">NTA in Effect, Validation Problems Expected</a></p>
 </li>
             </ul>
 </li>
@@ -1410,10 +1410,10 @@ here.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 dig, as shipped with BIND9. The output was hand-edited slightly to
 fit the formatting constraints of the document, but is otherwise
 consistent with the original output.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
-<div id="nta-in-effect-well-formed-signatures">
+<div id="nta-in-effect-valid-dnssec-configuration">
 <section id="appendix-B.1">
-        <h3 id="name-nta-in-effect-well-formed-s">
-<a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-nta-in-effect-well-formed-s" class="section-name selfRef">NTA in Effect, Well-Formed Signatures</a>
+        <h3 id="name-nta-in-effect-valid-dnssec-">
+<a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-nta-in-effect-valid-dnssec-" class="section-name selfRef">NTA in Effect, Valid DNSSEC Configuration</a>
         </h3>
 <p id="appendix-B.1-1">The zone NTAMUCH.ORG is signed and an intact and functional path
 of trust exists back to the root zone. An NTA is applied to the
@@ -1484,15 +1484,17 @@ jabley@manta ~ %
 </div>
 </section>
 </div>
-<div id="nta-in-effect-signature-problem">
+<div id="nta-in-effect-validation-problems-expected">
 <section id="appendix-B.2">
-        <h3 id="name-nta-in-effect-signature-pro">
-<a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-nta-in-effect-signature-pro" class="section-name selfRef">NTA in Effect, Signature Problem</a>
+        <h3 id="name-nta-in-effect-validation-pr">
+<a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-nta-in-effect-validation-pr" class="section-name selfRef">NTA in Effect, Validation Problems Expected</a>
         </h3>
 <p id="appendix-B.2-1">The zone BROKEN.NTAMUCH.ORG is delegated from the NTAMUCH.ORG zone
 using an accurate NS RRSet both sides of the zone cut, but a
-deliberately-fabricated DS RRSet at on the parent side. The effect
-is a non-functional secure delegation.<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
+deliberately-fabricated DS RRSet at on the parent side. Records in
+the child zone are not signed, and no child zone DNSKEY RRSet exists.
+The effect is a secure delegation to an unsigned zone, a broken
+configuration that we should expect to trigger validation failures.<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
 <p id="appendix-B.2-2">The same NTA as described in the previous example is in place for
 the domain NTAMUCH.ORG on the resolver 1.1.1.1, but, again, not
 on the resolver 9.9.9.9.<a href="#appendix-B.2-2" class="pilcrow">¶</a></p>
