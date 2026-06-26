@@ -162,7 +162,7 @@ dig, as shipped with BIND9. The output was hand-edited slightly to
 fit the formatting constraints of the document, but is otherwise
 consistent with the original output.
 
-## NTA in Effect, Well-Formed Signatures
+## NTA in Effect, Valid DNSSEC Configuration
 
 The zone NTAMUCH.ORG is signed and an intact and functional path
 of trust exists back to the root zone. An NTA is applied to the
@@ -231,12 +231,14 @@ NTAMUCH.ORG.  1767  IN  SOA barbara.ns.cloudflare.com. dns.cloudflare.com. (
 jabley@manta ~ %
 ~~~
 
-## NTA in Effect, Signature Problem
+## NTA in Effect, Validation Problems Expected
 
 The zone BROKEN.NTAMUCH.ORG is delegated from the NTAMUCH.ORG zone
 using an accurate NS RRSet both sides of the zone cut, but a
-deliberately-fabricated DS RRSet at on the parent side. The effect
-is a non-functional secure delegation.
+deliberately-fabricated DS RRSet at on the parent side. Records in
+the child zone are not signed, and no child zone DNSKEY RRSet exists.
+The effect is a secure delegation to an unsigned zone, a broken
+configuration that we should expect to trigger validation failures.
 
 The same NTA as described in the previous example is in place for
 the domain NTAMUCH.ORG on the resolver 1.1.1.1, but, again, not
