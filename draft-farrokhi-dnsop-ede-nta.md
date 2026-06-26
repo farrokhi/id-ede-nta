@@ -152,9 +152,9 @@ The authors thank the contributors to this document.
 
 # Examples
 
-The following examples use live examples that exist in the DNS at
-the time of writing. Readers from the future may need to recreate
-these configurations in order to reproduce the results illustrated
+The following examples use configurations that exist in the DNS at
+the time of writing. Readers from the future may need to create
+analogous configurations in order to reproduce the results illustrated
 here.
 
 These examples were constructed using the well-known diagnostic tool
