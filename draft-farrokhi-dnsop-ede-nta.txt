@@ -5,9 +5,9 @@
 Network Working Group                                        B. Farrokhi
 Internet-Draft                                                     Quad9
 Intended status: Informational                                  J. Abley
-Expires: 18 December 2026                                   S. Neuteboom
+Expires: 28 December 2026                                   S. Neuteboom
                                                               Cloudflare
-                                                            16 June 2026
+                                                            26 June 2026
 
 
          Disclosure of Negative Trust Anchors in DNS Responses
@@ -34,7 +34,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 December 2026.
+   This Internet-Draft will expire on 28 December 2026.
 
 Copyright Notice
 
@@ -62,6 +62,9 @@ Table of Contents
      7.1.  Normative References
      7.2.  Informative References
    Appendix A.  Acknowledgements
+   Appendix B.  Examples
+     B.1.  NTA in Effect, Well-Formed Signatures
+     B.2.  NTA in Effect, Signature Problem
    Authors' Addresses
 
 1.  Introduction
@@ -228,6 +231,155 @@ Table of Contents
 Appendix A.  Acknowledgements
 
    The authors thank the contributors to this document.
+
+Appendix B.  Examples
+
+   The following examples use live examples that exist in the DNS at the
+   time of writing.  Readers from the future may need to recreate these
+   configurations in order to reproduce the results illustrated here.
+
+   These examples were constructed using the well-known diagnostic tool
+   dig, as shipped with BIND9.  The output was hand-edited slightly to
+   fit the formatting constraints of the document, but is otherwise
+   consistent with the original output.
+
+B.1.  NTA in Effect, Well-Formed Signatures
+
+   The zone NTAMUCH.ORG is signed and an intact and functional path of
+   trust exists back to the root zone.  An NTA is applied to the domain
+   NTAMUCH.ORG at the security-aware, validating resolver 1.1.1.1, but
+   not at 9.9.9.9.
+
+jabley@manta ~ % dig @1.1.1.1 NTAMUCH.ORG SOA +nocd +rec +multiline
+
+; <<>> DiG 9.20.24 <<>> @1.1.1.1 NTAMUCH.ORG SOA +nocd +rec +multiline
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 46491
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; EDE: 33: (a Negative Trust Anchor has been applied for this query
+;   (see RFC 7646))
+;; QUESTION SECTION:
+;NTAMUCH.ORG.           IN SOA
+
+;; ANSWER SECTION:
+NTAMUCH.ORG.  1800  IN  SOA barbara.ns.cloudflare.com. dns.cloudflare.com. (
+                          2407706086 ; serial
+                          10000      ; refresh (2 hours 46 minutes 40 seconds)
+                          2400       ; retry (40 minutes)
+                          604800     ; expire (1 week)
+                          1800       ; minimum (30 minutes)
+                        )
+
+;; Query time: 21 msec
+;; SERVER: 1.1.1.1#53(1.1.1.1) (UDP)
+;; WHEN: Fri Jun 26 10:49:10 CEST 2026
+;; MSG SIZE  rcvd: 181
+
+jabley@manta ~ % dig @9.9.9.9 NTAMUCH.ORG SOA +nocd +rec +multiline
+
+; <<>> DiG 9.20.24 <<>> @9.9.9.9 NTAMUCH.ORG SOA +nocd +rec +multiline
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 7960
+;; flags: qr rd ra ad; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;NTAMUCH.ORG.           IN SOA
+
+;; ANSWER SECTION:
+NTAMUCH.ORG.  1767  IN  SOA barbara.ns.cloudflare.com. dns.cloudflare.com. (
+                          2407706086 ; serial
+                          10000      ; refresh (2 hours 46 minutes 40 seconds)
+                          2400       ; retry (40 minutes)
+                          604800     ; expire (1 week)
+                          1800       ; minimum (30 minutes)
+                        )
+
+;; Query time: 11 msec
+;; SERVER: 9.9.9.9#53(9.9.9.9) (UDP)
+;; WHEN: Fri Jun 26 10:49:20 CEST 2026
+;; MSG SIZE  rcvd: 105
+
+jabley@manta ~ %
+
+B.2.  NTA in Effect, Signature Problem
+
+   The zone BROKEN.NTAMUCH.ORG is delegated from the NTAMUCH.ORG zone
+   using an accurate NS RRSet both sides of the zone cut, but a
+   deliberately-fabricated DS RRSet at on the parent side.  The effect
+   is a non-functional secure delegation.
+
+   The same NTA as described in the previous example is in place for the
+   domain NTAMUCH.ORG on the resolver 1.1.1.1, but, again, not on the
+   resolver 9.9.9.9.
+
+   Both resolvers include different EDEs in the response which
+   illustrate the problem, but note the different RCODEs: with the NTA
+   in place, the 1.1.1.1 resolver returns an answer with NOERROR while
+   the 9.9.9.9 resolver with no applicable NTA correctly returns RCODE
+   SERVFAIL.
+
+jabley@manta ~ % dig @1.1.1.1 BROKEN.NTAMUCH.ORG SOA +nocd +rec +multiline
+
+; <<>> DiG 9.20.24 <<>> @1.1.1.1 BROKEN.NTAMUCH.ORG SOA +nocd +rec +multiline
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 25660
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; EDE: 9 (DNSKEY Missing): (no SEP matching the DS found for
+;   broken.ntamuch.org.)
+; EDE: 33: (a Negative Trust Anchor has been applied for this
+;   query (see RFC 7646))
+;; QUESTION SECTION:
+;BROKEN.NTAMUCH.ORG.    IN SOA
+
+;; ANSWER SECTION:
+BROKEN.NTAMUCH.ORG.  300  IN  SOA maleah.ns.cloudflare.com. dns.cloudflare.com. (
+                                2407705944 ; serial
+                                10000      ; refresh (2 hours 46 minutes 40 seconds)
+                                2400       ; retry (40 minutes)
+                                604800     ; expire (1 week)
+                                1800       ; minimum (30 minutes)
+                                )
+
+;; Query time: 20 msec
+;; SERVER: 1.1.1.1#53(1.1.1.1) (UDP)
+;; WHEN: Fri Jun 26 10:52:52 CEST 2026
+;; MSG SIZE  rcvd: 245
+
+jabley@manta ~ % dig @9.9.9.9 BROKEN.NTAMUCH.ORG SOA +nocd +rec +multiline
+
+; <<>> DiG 9.20.24 <<>> @9.9.9.9 BROKEN.NTAMUCH.ORG SOA +nocd +rec +multiline
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: SERVFAIL, id: 20047
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; EDE: 9 (DNSKEY Missing)
+;; QUESTION SECTION:
+;BROKEN.NTAMUCH.ORG.    IN SOA
+
+;; Query time: 116 msec
+;; SERVER: 9.9.9.9#53(9.9.9.9) (UDP)
+;; WHEN: Fri Jun 26 10:53:05 CEST 2026
+;; MSG SIZE  rcvd: 53
+
+jabley@manta ~ %
 
 Authors' Addresses
 

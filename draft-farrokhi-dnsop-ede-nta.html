@@ -13,7 +13,7 @@
 Trust Anchor (NTA) was in effect at the time that a DNS response
 was generated, using an Extended DNS Error (EDE). 
     " name="description">
-<meta content="xml2rfc 3.33.0" name="generator">
+<meta content="xml2rfc 3.34.0" name="generator">
 <meta content="DNS" name="keyword">
 <meta content="EDE" name="keyword">
 <meta content="Extended DNS Errors" name="keyword">
@@ -22,18 +22,19 @@ was generated, using an Extended DNS Error (EDE).
 <meta content="Negative Trust Anchor" name="keyword">
 <meta content="draft-farrokhi-dnsop-ede-nta-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.33.0
-    Python 3.12.13
-    ConfigArgParse 1.7
+  xml2rfc 3.34.0
+    Python 3.14.5
+    ConfigArgParse 1.7.5
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
-    lxml 6.0.2
-    platformdirs 4.9.6
+    lxml 6.1.1
+    natsort 8.4.0
+    platformdirs 4.10.0
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.7.0
+    wcwidth 0.8.1
 -->
 <link href="draft-farrokhi-dnsop-ede-nta.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1056,7 +1057,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Farrokhi, et al.</td>
-<td class="center">Expires 18 December 2026</td>
+<td class="center">Expires 28 December 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1069,12 +1070,12 @@ svg {
 <dd class="internet-draft">draft-farrokhi-dnsop-ede-nta-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-06-16" class="published">16 June 2026</time>
+<time datetime="2026-06-26" class="published">26 June 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-12-18">18 December 2026</time></dd>
+<dd class="expires"><time datetime="2026-12-28">28 December 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1118,7 +1119,7 @@ was generated, using an Extended DNS Error (EDE).<a href="#section-abstract-1" c
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 18 December 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 28 December 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1180,7 +1181,18 @@ was generated, using an Extended DNS Error (EDE).<a href="#section-abstract-1" c
             <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
+                <p id="section-toc.1-1.9.2.1.1"><a href="#appendix-B.1" class="auto internal xref">B.1</a>.  <a href="#name-nta-in-effect-well-formed-s" class="internal xref">NTA in Effect, Well-Formed Signatures</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
+                <p id="section-toc.1-1.9.2.2.1"><a href="#appendix-B.2" class="auto internal xref">B.2</a>.  <a href="#name-nta-in-effect-signature-pro" class="internal xref">NTA in Effect, Signature Problem</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1385,8 +1397,172 @@ transport between client and resolver, such as DNS over TLS
 <p id="appendix-A-1">The authors thank the contributors to this document.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="authors-addresses">
+<div id="examples">
 <section id="appendix-B">
+      <h2 id="name-examples">
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
+      </h2>
+<p id="appendix-B-1">The following examples use live examples that exist in the DNS at
+the time of writing. Readers from the future may need to recreate
+these configurations in order to reproduce the results illustrated
+here.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2">These examples were constructed using the well-known diagnostic tool
+dig, as shipped with BIND9. The output was hand-edited slightly to
+fit the formatting constraints of the document, but is otherwise
+consistent with the original output.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+<div id="nta-in-effect-well-formed-signatures">
+<section id="appendix-B.1">
+        <h3 id="name-nta-in-effect-well-formed-s">
+<a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-nta-in-effect-well-formed-s" class="section-name selfRef">NTA in Effect, Well-Formed Signatures</a>
+        </h3>
+<p id="appendix-B.1-1">The zone NTAMUCH.ORG is signed and an intact and functional path
+of trust exists back to the root zone. An NTA is applied to the
+domain NTAMUCH.ORG at the security-aware, validating resolver
+1.1.1.1, but not at 9.9.9.9.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-B.1-2">
+<pre>
+jabley@manta ~ % dig @1.1.1.1 NTAMUCH.ORG SOA +nocd +rec +multiline
+
+; &lt;&lt;&gt;&gt; DiG 9.20.24 &lt;&lt;&gt;&gt; @1.1.1.1 NTAMUCH.ORG SOA +nocd +rec +multiline
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 46491
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; EDE: 33: (a Negative Trust Anchor has been applied for this query
+;   (see RFC 7646))
+;; QUESTION SECTION:
+;NTAMUCH.ORG.           IN SOA
+
+;; ANSWER SECTION:
+NTAMUCH.ORG.  1800  IN  SOA barbara.ns.cloudflare.com. dns.cloudflare.com. (
+                          2407706086 ; serial
+                          10000      ; refresh (2 hours 46 minutes 40 seconds)
+                          2400       ; retry (40 minutes)
+                          604800     ; expire (1 week)
+                          1800       ; minimum (30 minutes)
+                        )
+
+;; Query time: 21 msec
+;; SERVER: 1.1.1.1#53(1.1.1.1) (UDP)
+;; WHEN: Fri Jun 26 10:49:10 CEST 2026
+;; MSG SIZE  rcvd: 181
+
+jabley@manta ~ % dig @9.9.9.9 NTAMUCH.ORG SOA +nocd +rec +multiline
+
+; &lt;&lt;&gt;&gt; DiG 9.20.24 &lt;&lt;&gt;&gt; @9.9.9.9 NTAMUCH.ORG SOA +nocd +rec +multiline
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 7960
+;; flags: qr rd ra ad; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;NTAMUCH.ORG.           IN SOA
+
+;; ANSWER SECTION:
+NTAMUCH.ORG.  1767  IN  SOA barbara.ns.cloudflare.com. dns.cloudflare.com. (
+                          2407706086 ; serial
+                          10000      ; refresh (2 hours 46 minutes 40 seconds)
+                          2400       ; retry (40 minutes)
+                          604800     ; expire (1 week)
+                          1800       ; minimum (30 minutes)
+                        )
+
+;; Query time: 11 msec
+;; SERVER: 9.9.9.9#53(9.9.9.9) (UDP)
+;; WHEN: Fri Jun 26 10:49:20 CEST 2026
+;; MSG SIZE  rcvd: 105
+
+jabley@manta ~ %
+</pre><a href="#appendix-B.1-2" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="nta-in-effect-signature-problem">
+<section id="appendix-B.2">
+        <h3 id="name-nta-in-effect-signature-pro">
+<a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-nta-in-effect-signature-pro" class="section-name selfRef">NTA in Effect, Signature Problem</a>
+        </h3>
+<p id="appendix-B.2-1">The zone BROKEN.NTAMUCH.ORG is delegated from the NTAMUCH.ORG zone
+using an accurate NS RRSet both sides of the zone cut, but a
+deliberately-fabricated DS RRSet at on the parent side. The effect
+is a non-functional secure delegation.<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-2">The same NTA as described in the previous example is in place for
+the domain NTAMUCH.ORG on the resolver 1.1.1.1, but, again, not
+on the resolver 9.9.9.9.<a href="#appendix-B.2-2" class="pilcrow">¶</a></p>
+<p id="appendix-B.2-3">Both resolvers include different EDEs in the response which illustrate
+the problem, but note the different RCODEs: with the NTA in place, the
+1.1.1.1 resolver returns an answer with NOERROR while the 9.9.9.9
+resolver with no applicable NTA correctly returns RCODE SERVFAIL.<a href="#appendix-B.2-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="appendix-B.2-4">
+<pre>
+jabley@manta ~ % dig @1.1.1.1 BROKEN.NTAMUCH.ORG SOA +nocd +rec +multiline
+
+; &lt;&lt;&gt;&gt; DiG 9.20.24 &lt;&lt;&gt;&gt; @1.1.1.1 BROKEN.NTAMUCH.ORG SOA +nocd +rec +multiline
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 25660
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; EDE: 9 (DNSKEY Missing): (no SEP matching the DS found for
+;   broken.ntamuch.org.)
+; EDE: 33: (a Negative Trust Anchor has been applied for this
+;   query (see RFC 7646))
+;; QUESTION SECTION:
+;BROKEN.NTAMUCH.ORG.    IN SOA
+
+;; ANSWER SECTION:
+BROKEN.NTAMUCH.ORG.  300  IN  SOA maleah.ns.cloudflare.com. dns.cloudflare.com. (
+                                2407705944 ; serial
+                                10000      ; refresh (2 hours 46 minutes 40 seconds)
+                                2400       ; retry (40 minutes)
+                                604800     ; expire (1 week)
+                                1800       ; minimum (30 minutes)
+                                )
+
+;; Query time: 20 msec
+;; SERVER: 1.1.1.1#53(1.1.1.1) (UDP)
+;; WHEN: Fri Jun 26 10:52:52 CEST 2026
+;; MSG SIZE  rcvd: 245
+
+jabley@manta ~ % dig @9.9.9.9 BROKEN.NTAMUCH.ORG SOA +nocd +rec +multiline
+
+; &lt;&lt;&gt;&gt; DiG 9.20.24 &lt;&lt;&gt;&gt; @9.9.9.9 BROKEN.NTAMUCH.ORG SOA +nocd +rec +multiline
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 20047
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; EDE: 9 (DNSKEY Missing)
+;; QUESTION SECTION:
+;BROKEN.NTAMUCH.ORG.    IN SOA
+
+;; Query time: 116 msec
+;; SERVER: 9.9.9.9#53(9.9.9.9) (UDP)
+;; WHEN: Fri Jun 26 10:53:05 CEST 2026
+;; MSG SIZE  rcvd: 53
+
+jabley@manta ~ %
+</pre><a href="#appendix-B.2-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="authors-addresses">
+<section id="appendix-C">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
