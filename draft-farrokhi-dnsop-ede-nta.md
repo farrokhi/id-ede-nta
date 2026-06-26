@@ -228,7 +228,7 @@ NTAMUCH.ORG.  1767  IN  SOA barbara.ns.cloudflare.com. dns.cloudflare.com. (
 ;; WHEN: Fri Jun 26 10:49:20 CEST 2026
 ;; MSG SIZE  rcvd: 105
 
-jabley@manta ~ % 
+jabley@manta ~ %
 ~~~
 
 ## NTA in Effect, Signature Problem
@@ -300,6 +300,6 @@ jabley@manta ~ % dig @9.9.9.9 BROKEN.NTAMUCH.ORG SOA +nocd +rec +multiline
 ;; WHEN: Fri Jun 26 10:53:05 CEST 2026
 ;; MSG SIZE  rcvd: 53
 
-jabley@manta ~ % 
+jabley@manta ~ %
 ~~~
 
