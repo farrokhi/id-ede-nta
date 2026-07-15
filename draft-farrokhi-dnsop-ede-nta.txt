@@ -4,7 +4,7 @@
 
 Network Working Group                                        B. Farrokhi
 Internet-Draft                                                     Quad9
-Updates: RFC7646 (if approved)                                  J. Abley
+Updates: 7646 (if approved)                                     J. Abley
 Intended status: Informational                              S. Neuteboom
 Expires: 16 January 2027                                      Cloudflare
                                                             15 July 2026
