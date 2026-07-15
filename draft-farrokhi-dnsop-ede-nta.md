@@ -49,7 +49,7 @@ domain to mitigate misconfiguration.
 
 A resolver with an NTA in effect might send a response that ordinarily
 would have been suppressed because of validation failures.  This
-document defines a new EDE that can be sent with a response to
+document defines a new EDE that can be sent within a response to
 indicate that the response was subject to an active NTA.
 
 A further goal of this signal is transparency toward end users and
@@ -100,8 +100,10 @@ whether the presence of the NTA had a material effect on the contents
 of the response.
 
 A resolver with multiple NTAs in place simultaneously MAY include
-multiple instances of this EDE in a single response, each representing
-a different NTA.
+multiple instances of this EDE in a single response. Multiple
+instances of this EDE in a single response might each have different
+EXTRA-TEXT fields, for example, and might each describe a different
+active, applicable NTA.
 
 The operator MAY use the EXTRA-TEXT field to add context about the
 NTA, such as the name at which it was configured, the reason it was
