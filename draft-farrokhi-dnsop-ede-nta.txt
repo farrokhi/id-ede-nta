@@ -114,7 +114,7 @@ Table of Contents
    response in which it appears.
 
    This EDE is intended for use in DNS responses sent by a DNS resolver
-   with a configured NTA and SHOULD NOT be included in other responses.
+   with a configured NTA and MUST NOT be included in other responses.
    For example, a DNS response sent by an authoritative-only DNS server,
    which does not perform validation and hence has no obvious use for an
    NTA, SHOULD NOT include this EDE.
@@ -179,10 +179,10 @@ Table of Contents
    EDEs encoded in DNS messages carry no cryptographic signatures and
    hence enjoy no inherent integrity protection.  An on-path attacker
    could add, remove, or modify an EDE.  Clients that require integrity
-   protection of these signals should use an authenticated and encrypted
-   transport between client and resolver, such as DNS over TLS [RFC7858]
-   or DNS over HTTPS [RFC8484].  See Section 6 of [RFC8914] for more
-   discussion.
+   protection of these signals should use a suitable mechanism, such as
+   TSIG [RFC8945], SIG(0) [RFC2931] or an authenticated and encrypted
+   transport protocol such as DNS over TLS [RFC7858] or DNS over HTTPS
+   [RFC8484].  See Section 6 of [RFC8914] for more discussion.
 
 7.  References
 
@@ -220,6 +220,16 @@ Table of Contents
               structured-dns-error-25>.
 
 7.2.  Informative References
+
+   [RFC8945]  Dupont, F., Morris, S., Vixie, P., Eastlake 3rd, D.,
+              Gudmundsson, O., and B. Wellington, "Secret Key
+              Transaction Authentication for DNS (TSIG)", STD 93,
+              RFC 8945, DOI 10.17487/RFC8945, November 2020,
+              <https://www.rfc-editor.org/info/rfc8945>.
+
+   [RFC2931]  Eastlake 3rd, D., "DNS Request and Transaction Signatures
+              ( SIG(0)s )", RFC 2931, DOI 10.17487/RFC2931, September
+              2000, <https://www.rfc-editor.org/info/rfc2931>.
 
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
               and P. Hoffman, "Specification for DNS over Transport

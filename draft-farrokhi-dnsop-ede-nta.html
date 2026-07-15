@@ -1248,7 +1248,7 @@ response does not change AD bit processing in DNS messages in any
 way. The only purpose of this EDE is to provide additional information
 about the response in which it appears.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3">This EDE is intended for use in DNS responses sent by a DNS resolver
-with a configured NTA and <span class="bcp14">SHOULD NOT</span> be included in other responses.
+with a configured NTA and <span class="bcp14">MUST NOT</span> be included in other responses.
 For example, a DNS response sent by an authoritative-only DNS server,
 which does not perform validation and hence has no obvious use for
 an NTA, <span class="bcp14">SHOULD NOT</span> include this EDE.<a href="#section-3-3" class="pilcrow">¶</a></p>
@@ -1328,10 +1328,11 @@ additional information.<a href="#section-6-2" class="pilcrow">¶</a></p>
 <p id="section-6-3">EDEs encoded in DNS messages carry no cryptographic signatures and
 hence enjoy no inherent integrity protection.  An on-path attacker
 could add, remove, or modify an EDE.  Clients that require integrity
-protection of these signals should use an authenticated and encrypted
-transport between client and resolver, such as DNS over TLS
-<span>[<a href="#RFC7858" class="cite xref">RFC7858</a>]</span> or DNS over HTTPS <span>[<a href="#RFC8484" class="cite xref">RFC8484</a>]</span>.  See Section 6 of
-<span>[<a href="#RFC8914" class="cite xref">RFC8914</a>]</span> for more discussion.<a href="#section-6-3" class="pilcrow">¶</a></p>
+protection of these signals should use a suitable mechanism, such
+as TSIG <span>[<a href="#RFC8945" class="cite xref">RFC8945</a>]</span>, SIG(0) <span>[<a href="#RFC2931" class="cite xref">RFC2931</a>]</span> or an authenticated and
+encrypted transport protocol such as DNS over TLS <span>[<a href="#RFC7858" class="cite xref">RFC7858</a>]</span> or
+DNS over HTTPS <span>[<a href="#RFC8484" class="cite xref">RFC8484</a>]</span>.  See Section 6 of <span>[<a href="#RFC8914" class="cite xref">RFC8914</a>]</span> for
+more discussion.<a href="#section-6-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">
@@ -1378,6 +1379,14 @@ transport between client and resolver, such as DNS over TLS
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="RFC8945">[RFC8945]</dt>
+        <dd>
+<span class="refAuthor">Dupont, F.</span>, <span class="refAuthor">Morris, S.</span>, <span class="refAuthor">Vixie, P.</span>, <span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refAuthor">Gudmundsson, O.</span>, and <span class="refAuthor">B. Wellington</span>, <span class="refTitle">"Secret Key Transaction Authentication for DNS (TSIG)"</span>, <span class="seriesInfo">STD 93</span>, <span class="seriesInfo">RFC 8945</span>, <span class="seriesInfo">DOI 10.17487/RFC8945</span>, <time datetime="2020-11" class="refDate">November 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8945">https://www.rfc-editor.org/info/rfc8945</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2931">[RFC2931]</dt>
+        <dd>
+<span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refTitle">"DNS Request and Transaction Signatures ( SIG(0)s )"</span>, <span class="seriesInfo">RFC 2931</span>, <span class="seriesInfo">DOI 10.17487/RFC2931</span>, <time datetime="2000-09" class="refDate">September 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2931">https://www.rfc-editor.org/info/rfc2931</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC7858">[RFC7858]</dt>
         <dd>
 <span class="refAuthor">Hu, Z.</span>, <span class="refAuthor">Zhu, L.</span>, <span class="refAuthor">Heidemann, J.</span>, <span class="refAuthor">Mankin, A.</span>, <span class="refAuthor">Wessels, D.</span>, and <span class="refAuthor">P. Hoffman</span>, <span class="refTitle">"Specification for DNS over Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 7858</span>, <span class="seriesInfo">DOI 10.17487/RFC7858</span>, <time datetime="2016-05" class="refDate">May 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7858">https://www.rfc-editor.org/info/rfc7858</a>&gt;</span>. </dd>
