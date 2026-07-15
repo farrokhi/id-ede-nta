@@ -198,8 +198,8 @@ Table of Contents
      |      |             | containing only A-labels)    |           |
      |      |             | with no trailing period      |           |
      +------+-------------+------------------------------+-----------+
-     | t    | timestamp   | A timestamp in RFC3339       |           |
-     |      |             | format                       |           |
+     | t    | timestamp   | A timestamp in RFC3339       | This      |
+     |      |             | format                       | document  |
      +------+-------------+------------------------------+-----------+
 
                                   Table 3
