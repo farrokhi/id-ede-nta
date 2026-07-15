@@ -148,7 +148,9 @@ transport between client and resolver, such as DNS over TLS
 
 # Acknowledgements
 
-The authors thank the contributors to this document.
+The authors acknowledge review and ideas from Carlos Horowicz,
+Mukund Sivaraman, Ralf Weber, Warren Kumari, Robert Edmonds and
+Petr Spacek.
 
 # Examples
 
