@@ -141,10 +141,11 @@ additional information.
 EDEs encoded in DNS messages carry no cryptographic signatures and
 hence enjoy no inherent integrity protection.  An on-path attacker
 could add, remove, or modify an EDE.  Clients that require integrity
-protection of these signals should use an authenticated and encrypted
-transport between client and resolver, such as DNS over TLS
-{{?RFC7858}} or DNS over HTTPS {{?RFC8484}}.  See Section 6 of
-{{!RFC8914}} for more discussion.
+protection of these signals should use a suitable mechanism, such
+as TSIG {{?RFC8945}}, SIG(0) {{?RFC2931}} or an authenticated and
+encrypted transport protocol such as DNS over TLS {{?RFC7858}} or
+DNS over HTTPS {{?RFC8484}}.  See Section 6 of {{!RFC8914}} for
+more discussion.
 
 --- back
 
