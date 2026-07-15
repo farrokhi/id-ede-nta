@@ -198,7 +198,7 @@ Table of Contents
      |      |             | containing only A-labels)    |           |
      |      |             | with no trailing period      |           |
      +------+-------------+------------------------------+-----------+
-     | t    | timestamp   | A timestamp in RFC3339       | This      |
+     | t    | timestamp   | A timestamp in [RFC3339]     | This      |
      |      |             | format                       | document  |
      +------+-------------+------------------------------+-----------+
 
@@ -256,6 +256,10 @@ Table of Contents
               error-25, 10 July 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-
               structured-dns-error-25>.
+
+   [RFC3339]  Klyne, G. and C. Newman, "Date and Time on the Internet:
+              Timestamps", RFC 3339, DOI 10.17487/RFC3339, July 2002,
+              <https://www.rfc-editor.org/info/rfc3339>.
 
 7.2.  Informative References
 
