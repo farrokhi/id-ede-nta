@@ -135,17 +135,18 @@ The IANA has made the following allocation in the "Extended DNS
 Error Codes" registry under the "Domain Name System (DNS) Parameters"
 registry group:
 
-| INFO-CODE | Purpose                | Reference     |
-|-----------|------------------------|---------------|
-| 33        | Negative Trust Anchor  | This document |
+| INFO-CODE  | Purpose               | Reference     |
+|:-----------|:--------------------- |:------------- |
+| 33         | Negative Trust Anchor | This document |
 
 The IANA is directed to update the "EXTRA-TEXT JSON Names" registry under
 the "Domain Name System (DNS) Parameters) registry group by adding the
 following entries:
 
-| JSON Name  | Field Meaning  | Description  | Reference  |
-| d          | domain-name    | A fully-qualified domain name (in the case of an IDN, containing only A-labels) with no trailing period  | This document  |
-| t          | timestamp      | A timestamp in RFC3339 format  | This document  |
+| JSON Name | Field Meaning | Description | Reference |
+|:--------- |:------------- |:----------- |:--------- |
+| d         | domain-name   | A fully-qualified domain name (in the case of an IDN, containing only A-labels) with no trailing period  | This document  |
+| t         | timestamp     | A timestamp in {{!RFC3339}} format  | This document  |
 
 
 # Security Considerations
