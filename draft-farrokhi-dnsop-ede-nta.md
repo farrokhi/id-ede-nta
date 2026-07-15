@@ -144,7 +144,7 @@ following entries:
 
 | JSON Name  | Field Meaning  | Description  | Reference  |
 | d          | domain-name    | A fully-qualified domain name (in the case of an IDN, containing only A-labels) with no trailing period  | This document  |
-| t          | timestamp      | A timestamp in RFC3339 format  |
+| t          | timestamp      | A timestamp in RFC3339 format  | This document  |
 
 
 # Security Considerations
