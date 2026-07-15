@@ -79,7 +79,7 @@ way. The only purpose of this EDE is to provide additional information
 about the response in which it appears.
 
 This EDE is intended for use in DNS responses sent by a DNS resolver
-with a configured NTA and SHOULD NOT be included in other responses.
+with a configured NTA and MUST NOT be included in other responses.
 For example, a DNS response sent by an authoritative-only DNS server,
 which does not perform validation and hence has no obvious use for
 an NTA, SHOULD NOT include this EDE.
