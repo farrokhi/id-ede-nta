@@ -102,7 +102,9 @@ A resolver with multiple NTAs in place simultaneously MAY include
 multiple instances of this EDE in a single response. Multiple
 instances of this EDE in a single response might each have different
 EXTRA-TEXT fields, for example, and might each describe a different
-active, applicable NTA.
+active, applicable NTA. When multiple instances of this EDE are
+included in a response, the EXTRA-TEXT field in each instance MUST
+be populated.
 
 The operator MAY use the EXTRA-TEXT field to add context about the
 NTA, such as the name at which it was configured, the reason it was
@@ -110,13 +112,23 @@ put in place, a reference where more information can be found, or
 its expected duration.  As noted in {{!RFC8914, Section 2}},
 EXTRA-TEXT is intended for human consumption; operators SHOULD keep
 it readable and SHOULD NOT include private or sensitive information.
+
 Structured data MAY be included in the EXTRA-TEXT field, as described
-in {{!I-D.ietf-dnsop-structured-dns-error}}.
+in {{!I-D.ietf-dnsop-structured-dns-error}}. The JSON Names "d" and
+"t" have been registered for this purpose (see {{iana}}) and should
+be used and interpreted when used with this EDE as follows:
 
-When multiple instances of this EDE are included, the EXTRA-TEXT
-field in each instance SHOULD be populated.
+| JSON Name  | Use and interpretation for this EDE  |
+| d          | The domain name at which an active NTA has been configured  |
+| t          | An indicative time at which this NTA might be expected to remain in place until  |
 
-# IANA Considerations
+Note that it is usual for NTAs to be configured in response to
+unplanned events that have afflicted unaffiliated third parties,
+and hence consumers of structured EXTRA-TEXT should be interpret
+timestamps with generous flexibility.
+
+
+# IANA Considerations {#iana}
 
 The IANA has made the following allocation in the "Extended DNS
 Error Codes" registry under the "Domain Name System (DNS) Parameters"
