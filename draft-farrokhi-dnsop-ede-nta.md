@@ -53,7 +53,7 @@ document defines a new EDE that can be sent within a response to
 indicate that the response was subject to an active NTA.
 
 A further goal of this signal is transparency toward end users and
-applications.  {{!RFC7646, Section 3.1}} recommends that operators
+applications.  {{Section 3.1 of !RFC7646}} recommends that operators
 disclose the NTAs they have in place, for example on a website, and
 notes that no in-band DNS signal exists to indicate that an NTA is in
 effect.  This document defines that in-band signal, complementing such
@@ -72,7 +72,7 @@ A response that includes one or more instances of EDE 33 was
 generated with a covering NTA {{!RFC7646}} in effect.
 
 As with all EDEs, the EDE defined in this document is diagnostic;
-per {{!RFC8914, Section 6}} a client MUST NOT use its presence
+per {{Section 6 of !RFC8914}} a client MUST NOT use its presence
 to alter protocol processing.  The inclusion of this EDE in a
 response does not change AD bit processing in DNS messages in any
 way. The only purpose of this EDE is to provide additional information
@@ -89,7 +89,8 @@ an NTA, SHOULD NOT include this EDE.
 An operator that applies an NTA SHOULD return this EDE in affected
 responses, so that end users and applications can tell that the
 response may not have been DNSSEC-validated.  This complements, and
-does not replace, the disclosure recommended in {{!RFC7646, Section 3.1}}.
+does not replace, the disclosure recommended in {{Section 3.1 of
+!RFC7646}}.
 
 A response might be affected by an NTA for various reasons, not
 just in the case where the QNAME is subordinate to the domain for
@@ -109,7 +110,7 @@ be populated.
 The operator MAY use the EXTRA-TEXT field to add context about the
 NTA, such as the name at which it was configured, the reason it was
 put in place, a reference where more information can be found, or
-its expected duration.  As noted in {{!RFC8914, Section 2}},
+its expected duration.  As noted in {{Section 2 of !RFC8914}},
 EXTRA-TEXT is intended for human consumption; operators SHOULD keep
 it readable and SHOULD NOT include private or sensitive information.
 
@@ -163,7 +164,7 @@ could add, remove, or modify an EDE.  Clients that require integrity
 protection of these signals should use a suitable mechanism, such
 as TSIG {{?RFC8945}}, SIG(0) {{?RFC2931}} or an authenticated and
 encrypted transport protocol such as DNS over TLS {{?RFC7858}} or
-DNS over HTTPS {{?RFC8484}}.  See {{!RFC8914, Section 6}} for
+DNS over HTTPS {{?RFC8484}}.  See {{Section 6 of !RFC8914}} for
 more discussion.
 
 --- back
